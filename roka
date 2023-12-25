@@ -1,0 +1,10 @@
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
+    if key == "e" then
+local VirtualInputManager = game:GetService("VirtualInputManager")
+VirtualInputManager:SendMouseButtonEvent(400,250,0, true, game, 1)
+VirtualInputManager:SendMouseButtonEvent(400,250,0, false, game, 1)
+task.wait(.03)
+VirtualInputManager:SendMouseButtonEvent(640,450,0, true, game, 1)
+VirtualInputManager:SendMouseButtonEvent(640,450,0, false, game, 1)
+    end
+end)
