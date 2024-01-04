@@ -1,10 +1,70 @@
-game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
-    if key == "e" then
-local VirtualInputManager = game:GetService("VirtualInputManager")
-VirtualInputManager:SendMouseButtonEvent(400,250,0, true, game, 1)
-VirtualInputManager:SendMouseButtonEvent(400,250,0, false, game, 1)
-task.wait(.03)
-VirtualInputManager:SendMouseButtonEvent(640,450,0, true, game, 1)
-VirtualInputManager:SendMouseButtonEvent(640,450,0, false, game, 1)
+game:GetService("Players").LocalPlayer.PlayerGui.ChildAdded:Connect(function()
+game:GetService("Players").LocalPlayer.PlayerGui.CosmeticTrade.Main.Receiving.ScrollingFrame.ChildAdded:Connect(function(offer)
+    offer.Visible = false
+end)
+end)
+    wait(.15)
+local function addskin(arg1)
+    local equipped = game:GetService("Players").LocalPlayer.PlayerGui.CosmeticTrade.Main.Stands.ScrollingFrame[arg1]:Clone()
+equipped.Parent = game:GetService("Players").LocalPlayer.PlayerGui.CosmeticTrade.Main.Offering.ScrollingFrame
+equipped.Square.Quantity.Text = "x1"
+end
+local function itemadd(arg1)
+local offer = game:GetService("Players").LocalPlayer.PlayerGui.CosmeticTrade.Main.Offering.ScrollingFrame
+if offer:FindFirstChild(arg1) then
+    local offerq = offer[arg1].Square.Quantity.Text
+    local itemq = items[arg1].Square.Quantity.Text
+    local offernum = string.match(offerq, "%d+")
+    local itemnum = string.match(itemq, "%d+")
+    local offerr = "x" .. offernum + 1
+    local itemr = "x" .. itemnum - 1
+    offer[arg1].Square.Quantity.Text = offerr
+    items[arg1].Square.Quantity.Text = itemr
+    else
+        local itemq = items[arg1].Square.Quantity.Text
+        local itemnum = string.match(itemq, "%d+")
+        local itemr = "x" .. itemnum - 1
+        local clone = items[arg1]:Clone()
+        clone.Parent = offer
+        clone.Square.Quantity.Text = "x1"
+        items[arg1].Square.Quantity.Text = itemr
+end
     end
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
+if key == "j" then
+addskin("Stand")
+ end
+if key == "k" then
+    addskin("Slot1")
+end
+if key == "l" then
+addskin("Slot2")
+ end
+if key == ";" then
+addskin("Slot3")
+ end
+if key == "'" then
+addskin("Slot4")
+ end
+if key == "r" then
+    itemadd("Rokakaka")
+end
+if key == "m" then
+    itemadd("Mysterious Arrow")
+end
+if key == "n" then
+    itemadd("Scythe")
+end
+if key == "c" then
+    itemadd("Cursed Scythe")
+end
+if key == "g" then
+    itemadd("Gold Coin")
+end
+if key == "b" then
+    itemadd("Boxing Claws")
+end
+if key == "v" then
+    itemadd("Lucky Arrow")
+end
 end)
