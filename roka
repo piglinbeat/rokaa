@@ -11,6 +11,7 @@ equipped.Square.Quantity.Text = "x1"
 end
 local function itemadd(arg1)
 local offer = game:GetService("Players").LocalPlayer.PlayerGui.CosmeticTrade.Main.Offering.ScrollingFrame
+local items = game:GetService("Players").LocalPlayer.PlayerGui.CosmeticTrade.Main.Items.ScrollingFrame
 if offer:FindFirstChild(arg1) then
     local offerq = offer[arg1].Square.Quantity.Text
     local itemq = items[arg1].Square.Quantity.Text
@@ -58,13 +59,10 @@ end
 if key == "c" then
     itemadd("Cursed Scythe")
 end
-if key == "g" then
-    itemadd("Gold Coin")
-end
 if key == "b" then
     itemadd("Boxing Claws")
 end
 if key == "v" then
     itemadd("Lucky Arrow")
-end
+    end
 end)
